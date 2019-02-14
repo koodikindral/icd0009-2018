@@ -1,6 +1,9 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using DAL;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
-using WebApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.Controllers
 {
@@ -8,11 +11,28 @@ namespace WebApp.Controllers
     [ApiController]
     public class UsersController : Controller
     {
-        // GET: api/Users
-        [HttpGet]
-        public ActionResult<UserModel> Index()
+        private readonly AppDbContext db;
+   
+        public UsersController(AppDbContext context)
         {
-            return new UserModel(1, "Gert");
+            db = context;
         }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        {
+            return await db.Users.ToListAsync();
+        }
+
+        
+        [HttpPost]
+        public async Task<ActionResult<User>> PostUser(User user)
+        
+        {
+            db.Users.Add(user);
+            await db.SaveChangesAsync();
+            return CreatedAtAction("GetUsers", new { id = user.Id }, user);
+        }
+
     }
 }
