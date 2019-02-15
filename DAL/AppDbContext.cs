@@ -1,14 +1,15 @@
-﻿using Domain;
+﻿using Domain.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext :  IdentityDbContext<User, Role, int>
     {
         public AppDbContext(DbContextOptions options) : base(options)
         {
         }
 
-        public DbSet<User> Users { get; set; }
+        public new DbSet<User> Users { get; set; }
     }
 }
