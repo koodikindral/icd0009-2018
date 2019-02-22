@@ -33,7 +33,22 @@ namespace WebApp
                 .AddDbContext<AppDbContext>(options =>
                     options.UseNpgsql(Configuration.GetConnectionString("Database")))
                 .BuildServiceProvider();
-            services.AddSwaggerDocument();
+            services.AddSwaggerDocument(config =>
+            {
+                config.PostProcess = document =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "Payments API";
+                    document.Info.Description = "A simple ASP.NET Core web API for payments";
+                    document.Info.TermsOfService = "None";
+                    document.Info.Contact = new NSwag.SwaggerContact
+                    {
+                        Name = "Gert Vesterberg",
+                        Email = string.Empty,
+                        Url = "https://koodikindral.com/"
+                    };
+                };
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
