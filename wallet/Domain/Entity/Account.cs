@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Domain.Entity
 {
     public class Account: BaseEntity

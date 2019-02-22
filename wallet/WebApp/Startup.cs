@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NSwag;
 
 namespace WebApp
 {
@@ -41,7 +42,7 @@ namespace WebApp
                     document.Info.Title = "Payments API";
                     document.Info.Description = "A simple ASP.NET Core web API for payments";
                     document.Info.TermsOfService = "None";
-                    document.Info.Contact = new NSwag.SwaggerContact
+                    document.Info.Contact = new SwaggerContact
                     {
                         Name = "Gert Vesterberg",
                         Email = string.Empty,
