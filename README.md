@@ -1,3 +1,5 @@
+Documentation: docs/scope_of_work.pdf
+
 Building and running Docker image:
 
 ```
