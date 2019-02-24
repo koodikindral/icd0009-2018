@@ -1,0 +1,48 @@
+@startuml
+skinparam monochrome true
+skinparam classBackgroundColor transparent
+skinparam backgroundColor transparent
+skinparam style strictuml
+!pragma teoz on
+
+actor UI
+
+group Login and generate access token
+	activate UI
+	UI->Sportsbook: Username & password
+	activate Sportsbook
+	Sportsbook->Sportsbook: Log in
+	Sportsbook->Sportsbook: Generate JWT
+	Sportsbook->UI: success (X-AUTH-TOKEN)
+	deactivate Sportsbook
+	deactivate UI
+end group
+
+group Make a deposit
+	activate UI
+	UI->Wallet: X-AUTH-TOKEN, deposit amount
+	activate Wallet
+	Wallet->Wallet: validate JWT
+	Wallet->Wallet: modify balance
+	Wallet->UI: success (balance)
+	deactivate Wallet
+	deactivate UI
+end group
+
+group Place a bet
+	activate UI
+	UI->Sportsbook: X-AUTH-TOKEN
+	activate Sportsbook
+	Sportsbook->Sportsbook: validate JWT
+	Sportsbook->Wallet: bet amount
+	activate Wallet
+	Wallet->Wallet: check balance
+	Wallet->Sportsbook: success
+	deactivate Wallet
+	Sportsbook->Sportsbook: place a bet
+	Sportsbook->UI: success (balance)
+	deactivate Sportsbook
+	deactivate UI
+end group
+
+@enduml
