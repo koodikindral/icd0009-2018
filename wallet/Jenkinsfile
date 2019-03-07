@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clean') {
+            steps {
+                dotnet clean
+            }
+        }
+
+        stage('Build') {
+            steps {
+                dotnet build
+            }
+        }
+    }
+}
