@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using System.Collections.Generic;
+using DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -36,8 +37,10 @@ namespace WebApp
                 .BuildServiceProvider();
             services.AddSwaggerDocument(config =>
             {
+                
                 config.PostProcess = document =>
                 {
+                    document.Schemes = new System.Collections.Generic.List<SwaggerSchema> { SwaggerSchema.Https };
                     document.Info.Version = "v1";
                     document.Info.Title = "Payments API";
                     document.Info.Description = "A simple ASP.NET Core web API for payments";
