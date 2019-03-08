@@ -11,13 +11,13 @@ namespace DAL
         }
 
         public new DbSet<User> Users { get; set; }
-        public new DbSet<Account> Accounts { get; set; }
-        public new DbSet<Product> Products { get; set; }
-        public new DbSet<Currency> Currencies { get; set; }
-        public new DbSet<PaymentMethod> PaymentMethods { get; set; }
-        public new DbSet<Ledger> Ledger { get; set; }
-        public new DbSet<LedgerType> LedgerTypes { get; set; }
-        public new DbSet<Payment> Payments { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Currency> Currencies { get; set; }
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public DbSet<Ledger> Ledger { get; set; }
+        public DbSet<LedgerType> LedgerTypes { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
