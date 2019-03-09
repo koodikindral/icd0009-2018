@@ -21,7 +21,7 @@ pipeline {
                 
         stage('Deploy K8S') {
             steps {
-                sh 'kubectl set image deployments/sportsbook sportsbook=$(docker inspect --format='{{index .RepoDigests 0}}' koodikindral/api:sportsbook)'
+                sh 'kubectl set image deployments/sportsbook sportsbook=$(docker inspect --format="{{index .RepoDigests 0}}" koodikindral/api:sportsbook)'
             }
         }
     }
