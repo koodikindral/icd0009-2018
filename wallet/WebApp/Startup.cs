@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using NSwag;
 
 namespace WebApp
@@ -18,7 +19,7 @@ namespace WebApp
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -37,10 +38,9 @@ namespace WebApp
                 .BuildServiceProvider();
             services.AddSwaggerDocument(config =>
             {
-                
                 config.PostProcess = document =>
                 {
-                    document.Schemes = new System.Collections.Generic.List<SwaggerSchema> { SwaggerSchema.Https };
+                    document.Schemes = new List<SwaggerSchema> {SwaggerSchema.Https};
                     document.Info.Version = "v1";
                     document.Info.Title = "Payments API";
                     document.Info.Description = "A simple ASP.NET Core web API for payments";
@@ -58,8 +58,15 @@ namespace WebApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("secrets/appsettings.secrets.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
