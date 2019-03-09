@@ -15,11 +15,5 @@ pipeline {
                 sh 'dotnet build wallet'
             }
         }
-        
-        stage('Build sportsbook') {
-            steps {
-                sh 'dotnet build sportsbook'
-            }
-        }
     }
 }
