@@ -5,13 +5,13 @@ pipeline {
 
         stage('Clean') {
             steps {
-                sh 'dotnet clean wallet'
+                sh 'dotnet clean sportsbook'
             }
         }
 
-        stage('Build wallet') {
+        stage('Build sportsbook') {
             steps {
-                sh 'dotnet build wallet'
+                sh 'dotnet build sportsbook'
             }
         }
     }
