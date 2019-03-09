@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.ApiControllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class LedgerTypesController : ControllerBase
     {
@@ -19,14 +19,14 @@ namespace WebApp.ApiControllers
             _context = context;
         }
 
-        // GET: api/LedgerTypes
+        // GET: LedgerTypes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<LedgerType>>> GetLedgerTypes()
         {
             return await _context.LedgerTypes.ToListAsync();
         }
 
-        // GET: api/LedgerTypes/5
+        // GET: LedgerTypes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<LedgerType>> GetLedgerType(int id)
         {
@@ -40,7 +40,7 @@ namespace WebApp.ApiControllers
             return ledgerType;
         }
 
-        // PUT: api/LedgerTypes/5
+        // PUT: LedgerTypes/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutLedgerType(int id, LedgerType ledgerType)
         {
@@ -70,7 +70,7 @@ namespace WebApp.ApiControllers
             return NoContent();
         }
 
-        // POST: api/LedgerTypes
+        // POST: LedgerTypes
         [HttpPost]
         public async Task<ActionResult<LedgerType>> PostLedgerType(LedgerType ledgerType)
         {
@@ -80,7 +80,7 @@ namespace WebApp.ApiControllers
             return CreatedAtAction("GetLedgerType", new { id = ledgerType.Id }, ledgerType);
         }
 
-        // DELETE: api/LedgerTypes/5
+        // DELETE: LedgerTypes/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<LedgerType>> DeleteLedgerType(int id)
         {

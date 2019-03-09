@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.ApiControllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class PaymentController : ControllerBase
     {
@@ -19,14 +19,14 @@ namespace WebApp.ApiControllers
             _context = context;
         }
 
-        // GET: api/Payment
+        // GET: Payment
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Payment>>> GetPayments()
         {
             return await _context.Payments.ToListAsync();
         }
 
-        // GET: api/Payment/5
+        // GET: Payment/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Payment>> GetPayment(int id)
         {
@@ -40,7 +40,7 @@ namespace WebApp.ApiControllers
             return payment;
         }
 
-        // PUT: api/Payment/5
+        // PUT: Payment/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPayment(int id, Payment payment)
         {
@@ -70,7 +70,7 @@ namespace WebApp.ApiControllers
             return NoContent();
         }
 
-        // POST: api/Payment
+        // POST: Payment
         [HttpPost]
         public async Task<ActionResult<Payment>> PostPayment(Payment payment)
         {
@@ -80,7 +80,7 @@ namespace WebApp.ApiControllers
             return CreatedAtAction("GetPayment", new { id = payment.Id }, payment);
         }
 
-        // DELETE: api/Payment/5
+        // DELETE: Payment/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Payment>> DeletePayment(int id)
         {

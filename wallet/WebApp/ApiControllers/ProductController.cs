@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.ApiControllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -19,14 +19,14 @@ namespace WebApp.ApiControllers
             _context = context;
         }
 
-        // GET: api/Product
+        // GET: Product
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
             return await _context.Products.ToListAsync();
         }
 
-        // GET: api/Product/5
+        // GET: Product/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
@@ -40,7 +40,7 @@ namespace WebApp.ApiControllers
             return product;
         }
 
-        // PUT: api/Product/5
+        // PUT: Product/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
         {
@@ -70,7 +70,7 @@ namespace WebApp.ApiControllers
             return NoContent();
         }
 
-        // POST: api/Product
+        // POST: Product
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
         {
@@ -80,7 +80,7 @@ namespace WebApp.ApiControllers
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
-        // DELETE: api/Product/5
+        // DELETE: Product/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> DeleteProduct(int id)
         {

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.ApiControllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CurrencyController : ControllerBase
     {
@@ -19,14 +19,14 @@ namespace WebApp.ApiControllers
             _context = context;
         }
 
-        // GET: api/Currency
+        // GET: Currency
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Currency>>> GetCurrencies()
         {
             return await _context.Currencies.ToListAsync();
         }
 
-        // GET: api/Currency/5
+        // GET: Currency/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Currency>> GetCurrency(int id)
         {
@@ -40,7 +40,7 @@ namespace WebApp.ApiControllers
             return currency;
         }
 
-        // PUT: api/Currency/5
+        // PUT: Currency/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCurrency(int id, Currency currency)
         {
@@ -70,7 +70,7 @@ namespace WebApp.ApiControllers
             return NoContent();
         }
 
-        // POST: api/Currency
+        // POST: Currency
         [HttpPost]
         public async Task<ActionResult<Currency>> PostCurrency(Currency currency)
         {
@@ -80,7 +80,7 @@ namespace WebApp.ApiControllers
             return CreatedAtAction("GetCurrency", new { id = currency.Id }, currency);
         }
 
-        // DELETE: api/Currency/5
+        // DELETE: Currency/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Currency>> DeleteCurrency(int id)
         {

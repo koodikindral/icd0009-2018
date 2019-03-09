@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.ApiControllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -19,14 +19,14 @@ namespace WebApp.ApiControllers
             _context = context;
         }
 
-        // GET: api/User
+        // GET: User
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
         }
 
-        // GET: api/User/5
+        // GET: User/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -40,7 +40,7 @@ namespace WebApp.ApiControllers
             return user;
         }
 
-        // PUT: api/User/5
+        // PUT: User/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
@@ -70,7 +70,7 @@ namespace WebApp.ApiControllers
             return NoContent();
         }
 
-        // POST: api/User
+        // POST: User
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
@@ -80,7 +80,7 @@ namespace WebApp.ApiControllers
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
-        // DELETE: api/User/5
+        // DELETE: User/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<User>> DeleteUser(int id)
         {

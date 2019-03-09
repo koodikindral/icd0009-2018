@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.ApiControllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
     {
@@ -19,14 +19,14 @@ namespace WebApp.ApiControllers
             _context = context;
         }
 
-        // GET: api/Account
+        // GET: Account
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Account>>> GetAccounts()
         {
             return await _context.Accounts.ToListAsync();
         }
 
-        // GET: api/Account/5
+        // GET: Account/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Account>> GetAccount(int id)
         {
@@ -40,7 +40,7 @@ namespace WebApp.ApiControllers
             return account;
         }
 
-        // PUT: api/Account/5
+        // PUT: Account/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAccount(int id, Account account)
         {
@@ -70,7 +70,7 @@ namespace WebApp.ApiControllers
             return NoContent();
         }
 
-        // POST: api/Account
+        // POST: Account
         [HttpPost]
         public async Task<ActionResult<Account>> PostAccount(Account account)
         {
@@ -80,7 +80,7 @@ namespace WebApp.ApiControllers
             return CreatedAtAction("GetAccount", new { id = account.Id }, account);
         }
 
-        // DELETE: api/Account/5
+        // DELETE: Account/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Account>> DeleteAccount(int id)
         {

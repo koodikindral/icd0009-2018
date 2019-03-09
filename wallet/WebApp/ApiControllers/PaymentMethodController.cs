@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.ApiControllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class PaymentMethodController : ControllerBase
     {
@@ -19,14 +19,14 @@ namespace WebApp.ApiControllers
             _context = context;
         }
 
-        // GET: api/PaymentMethod
+        // GET: PaymentMethod
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PaymentMethod>>> GetPaymentMethods()
         {
             return await _context.PaymentMethods.ToListAsync();
         }
 
-        // GET: api/PaymentMethod/5
+        // GET: PaymentMethod/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PaymentMethod>> GetPaymentMethod(int id)
         {
@@ -40,7 +40,7 @@ namespace WebApp.ApiControllers
             return paymentMethod;
         }
 
-        // PUT: api/PaymentMethod/5
+        // PUT: PaymentMethod/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPaymentMethod(int id, PaymentMethod paymentMethod)
         {
@@ -70,7 +70,7 @@ namespace WebApp.ApiControllers
             return NoContent();
         }
 
-        // POST: api/PaymentMethod
+        // POST: PaymentMethod
         [HttpPost]
         public async Task<ActionResult<PaymentMethod>> PostPaymentMethod(PaymentMethod paymentMethod)
         {
@@ -80,7 +80,7 @@ namespace WebApp.ApiControllers
             return CreatedAtAction("GetPaymentMethod", new { id = paymentMethod.Id }, paymentMethod);
         }
 
-        // DELETE: api/PaymentMethod/5
+        // DELETE: PaymentMethod/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<PaymentMethod>> DeletePaymentMethod(int id)
         {

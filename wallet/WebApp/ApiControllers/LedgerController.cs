@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.ApiControllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class LedgerController : ControllerBase
     {
@@ -19,14 +19,14 @@ namespace WebApp.ApiControllers
             _context = context;
         }
 
-        // GET: api/Ledger
+        // GET: Ledger
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ledger>>> GetLedger()
         {
             return await _context.Ledger.ToListAsync();
         }
 
-        // GET: api/Ledger/5
+        // GET: Ledger/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Ledger>> GetLedger(int id)
         {
@@ -40,7 +40,7 @@ namespace WebApp.ApiControllers
             return ledger;
         }
 
-        // PUT: api/Ledger/5
+        // PUT: Ledger/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutLedger(int id, Ledger ledger)
         {
@@ -70,7 +70,7 @@ namespace WebApp.ApiControllers
             return NoContent();
         }
 
-        // POST: api/Ledger
+        // POST: Ledger
         [HttpPost]
         public async Task<ActionResult<Ledger>> PostLedger(Ledger ledger)
         {
@@ -80,7 +80,7 @@ namespace WebApp.ApiControllers
             return CreatedAtAction("GetLedger", new { id = ledger.Id }, ledger);
         }
 
-        // DELETE: api/Ledger/5
+        // DELETE: Ledger/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Ledger>> DeleteLedger(int id)
         {
