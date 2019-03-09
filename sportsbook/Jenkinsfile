@@ -3,15 +3,26 @@ pipeline {
 
     stages {
 
-        stage('Clean') {
+        stage('Build Docker image') {
             steps {
-                sh 'dotnet clean sportsbook'
+                dir("sportsbook") {
+                    sh 'docker build -t koodikindral/api:sportsbook .'
+                }
             }
         }
-
-        stage('Build sportsbook') {
+      
+        stage('Push Docker image') {
             steps {
-                sh 'dotnet build sportsbook'
+                dir("sportsbook") {
+                    sh 'docker push koodikindral/api:sportsbook'
+                }
+            }
+        }
+                
+        stage('Deploy K8S') {
+            steps {
+                sh 'kubectl set image deployments/wallet wallet=koodikindral/api'
+                sh 'kubectl set image deployments/wallet wallet=koodikindral/api:sportsbook'
             }
         }
     }

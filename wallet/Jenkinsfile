@@ -3,15 +3,26 @@ pipeline {
 
     stages {
 
-        stage('Clean') {
+        stage('Build Docker image') {
             steps {
-                sh 'dotnet clean wallet'
+                dir("wallet") {
+                    sh 'docker build -t koodikindral/api:wallet .'
+                }
             }
         }
-
-        stage('Build wallet') {
+      
+        stage('Push Docker image') {
             steps {
-                sh 'dotnet build wallet'
+                dir("wallet") {
+                    sh 'docker push koodikindral/api:wallet'
+                }
+            }
+        }
+                
+        stage('Deploy K8S') {
+            steps {
+                sh 'kubectl set image deployments/wallet wallet=koodikindral/api'
+                sh 'kubectl set image deployments/wallet wallet=koodikindral/api:wallet'
             }
         }
     }
