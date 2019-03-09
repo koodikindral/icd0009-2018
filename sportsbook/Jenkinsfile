@@ -21,8 +21,8 @@ pipeline {
                 
         stage('Deploy K8S') {
             steps {
-                sh 'kubectl set image deployments/wallet wallet=koodikindral/api'
-                sh 'kubectl set image deployments/wallet wallet=koodikindral/api:sportsbook'
+                sh 'kubectl set image deployments/sportsbook sportsbook=koodikindral/api'
+                sh 'kubectl set image deployments/sportsbook sportsbook=koodikindral/api:sportsbook'
             }
         }
     }
