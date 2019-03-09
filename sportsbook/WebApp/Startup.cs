@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using System.Collections.Generic;
+using DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -17,7 +18,7 @@ namespace WebApp
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -38,6 +39,7 @@ namespace WebApp
             {
                 config.PostProcess = document =>
                 {
+                    document.Schemes = new List<SwaggerSchema> {SwaggerSchema.Https};
                     document.Info.Version = "v1";
                     document.Info.Title = "Sportsbook API";
                     document.Info.Description = "A simple ASP.NET Core web API for sportsbook";
@@ -57,6 +59,13 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile("secrets/appsettings.secrets.json", true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -9,12 +9,12 @@ namespace DAL
         {
             
         }
-        public new DbSet<Bet> Bets { get; set; }
-        public new DbSet<Category> Categories { get; set; }
-        public new DbSet<Match> Matches { get; set; }
-        public new DbSet<Odds> Odds { get; set; }
-        public new DbSet<Result> Results { get; set; }
-        public new DbSet<Site> Sites { get; set; }
-        public new DbSet<Team> Teams { get; set; }
+        public DbSet<Bet> Bets { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Match> Matches { get; set; }
+        public DbSet<Odds> Odds { get; set; }
+        public DbSet<Result> Results { get; set; }
+        public DbSet<Site> Sites { get; set; }
+        public DbSet<Team> Teams { get; set; }
     }
 }
