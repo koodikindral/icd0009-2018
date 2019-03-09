@@ -10,7 +10,7 @@ using Domain.Entity;
 
 namespace WebApp.ApiControllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class MatchController : ControllerBase
     {
@@ -21,14 +21,14 @@ namespace WebApp.ApiControllers
             _context = context;
         }
 
-        // GET: api/Match
+        // GET: Match
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Match>>> GetMatches()
         {
             return await _context.Matches.ToListAsync();
         }
 
-        // GET: api/Match/5
+        // GET: Match/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Match>> GetMatch(int id)
         {
@@ -42,7 +42,7 @@ namespace WebApp.ApiControllers
             return match;
         }
 
-        // PUT: api/Match/5
+        // PUT: Match/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMatch(int id, Match match)
         {
@@ -72,7 +72,7 @@ namespace WebApp.ApiControllers
             return NoContent();
         }
 
-        // POST: api/Match
+        // POST: Match
         [HttpPost]
         public async Task<ActionResult<Match>> PostMatch(Match match)
         {
@@ -82,7 +82,7 @@ namespace WebApp.ApiControllers
             return CreatedAtAction("GetMatch", new { id = match.Id }, match);
         }
 
-        // DELETE: api/Match/5
+        // DELETE: Match/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Match>> DeleteMatch(int id)
         {

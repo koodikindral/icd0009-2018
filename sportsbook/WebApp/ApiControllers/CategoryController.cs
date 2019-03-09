@@ -10,7 +10,7 @@ using Domain.Entity;
 
 namespace WebApp.ApiControllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase
     {
@@ -21,14 +21,14 @@ namespace WebApp.ApiControllers
             _context = context;
         }
 
-        // GET: api/Category
+        // GET: Category
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
             return await _context.Categories.ToListAsync();
         }
 
-        // GET: api/Category/5
+        // GET: Category/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Category>> GetCategory(int id)
         {
@@ -42,7 +42,7 @@ namespace WebApp.ApiControllers
             return category;
         }
 
-        // PUT: api/Category/5
+        // PUT: Category/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategory(int id, Category category)
         {
@@ -72,7 +72,7 @@ namespace WebApp.ApiControllers
             return NoContent();
         }
 
-        // POST: api/Category
+        // POST: Category
         [HttpPost]
         public async Task<ActionResult<Category>> PostCategory(Category category)
         {
@@ -82,7 +82,7 @@ namespace WebApp.ApiControllers
             return CreatedAtAction("GetCategory", new { id = category.Id }, category);
         }
 
-        // DELETE: api/Category/5
+        // DELETE: Category/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Category>> DeleteCategory(int id)
         {

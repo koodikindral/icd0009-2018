@@ -76,9 +76,9 @@ namespace WebApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UsePathBase("/sports");
             app.UseSwagger();
-            app.UseSwaggerUi3();
+            app.UseSwaggerUi3(s => { s.DocumentPath = "/swagger/v1/swagger.json"; });
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

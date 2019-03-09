@@ -10,7 +10,7 @@ using Domain.Entity;
 
 namespace WebApp.ApiControllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class TeamController : ControllerBase
     {
@@ -21,14 +21,14 @@ namespace WebApp.ApiControllers
             _context = context;
         }
 
-        // GET: api/Team
+        // GET: Team
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Team>>> GetTeams()
         {
             return await _context.Teams.ToListAsync();
         }
 
-        // GET: api/Team/5
+        // GET: Team/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Team>> GetTeam(int id)
         {
@@ -42,7 +42,7 @@ namespace WebApp.ApiControllers
             return team;
         }
 
-        // PUT: api/Team/5
+        // PUT: Team/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTeam(int id, Team team)
         {
@@ -72,7 +72,7 @@ namespace WebApp.ApiControllers
             return NoContent();
         }
 
-        // POST: api/Team
+        // POST: Team
         [HttpPost]
         public async Task<ActionResult<Team>> PostTeam(Team team)
         {
@@ -82,7 +82,7 @@ namespace WebApp.ApiControllers
             return CreatedAtAction("GetTeam", new { id = team.Id }, team);
         }
 
-        // DELETE: api/Team/5
+        // DELETE: Team/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Team>> DeleteTeam(int id)
         {

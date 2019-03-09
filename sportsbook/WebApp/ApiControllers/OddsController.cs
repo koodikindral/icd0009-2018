@@ -10,7 +10,7 @@ using Domain.Entity;
 
 namespace WebApp.ApiControllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class OddsController : ControllerBase
     {
@@ -21,14 +21,14 @@ namespace WebApp.ApiControllers
             _context = context;
         }
 
-        // GET: api/Odds
+        // GET: Odds
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Odds>>> GetOdds()
         {
             return await _context.Odds.ToListAsync();
         }
 
-        // GET: api/Odds/5
+        // GET: Odds/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Odds>> GetOdds(int id)
         {
@@ -42,7 +42,7 @@ namespace WebApp.ApiControllers
             return odds;
         }
 
-        // PUT: api/Odds/5
+        // PUT: Odds/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOdds(int id, Odds odds)
         {
@@ -72,7 +72,7 @@ namespace WebApp.ApiControllers
             return NoContent();
         }
 
-        // POST: api/Odds
+        // POST: Odds
         [HttpPost]
         public async Task<ActionResult<Odds>> PostOdds(Odds odds)
         {
@@ -82,7 +82,7 @@ namespace WebApp.ApiControllers
             return CreatedAtAction("GetOdds", new { id = odds.Id }, odds);
         }
 
-        // DELETE: api/Odds/5
+        // DELETE: Odds/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Odds>> DeleteOdds(int id)
         {

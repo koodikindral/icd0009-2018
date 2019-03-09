@@ -10,7 +10,7 @@ using Domain.Entity;
 
 namespace WebApp.ApiControllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class BetController : ControllerBase
     {
@@ -21,14 +21,14 @@ namespace WebApp.ApiControllers
             _context = context;
         }
 
-        // GET: api/Bet
+        // GET: Bet
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Bet>>> GetBets()
         {
             return await _context.Bets.ToListAsync();
         }
 
-        // GET: api/Bet/5
+        // GET: Bet/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Bet>> GetBet(int id)
         {
@@ -42,7 +42,7 @@ namespace WebApp.ApiControllers
             return bet;
         }
 
-        // PUT: api/Bet/5
+        // PUT: Bet/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBet(int id, Bet bet)
         {
@@ -72,7 +72,7 @@ namespace WebApp.ApiControllers
             return NoContent();
         }
 
-        // POST: api/Bet
+        // POST: Bet
         [HttpPost]
         public async Task<ActionResult<Bet>> PostBet(Bet bet)
         {
@@ -82,7 +82,7 @@ namespace WebApp.ApiControllers
             return CreatedAtAction("GetBet", new { id = bet.Id }, bet);
         }
 
-        // DELETE: api/Bet/5
+        // DELETE: Bet/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Bet>> DeleteBet(int id)
         {
