@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DAL;
 using Domain.Entity;
+using Domain.Entity.Sportsbook;
 
 namespace WebApp.ApiControllers
 {

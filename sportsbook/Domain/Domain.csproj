@@ -11,4 +11,14 @@
         <PackageReference Include="NSwag.AspNetCore" Version="12.0.15" />
         <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Base\Base.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Identity" />
+      <Folder Include="Sportsbook" />
+      <Folder Include="Wallet" />
+    </ItemGroup>
 </Project>
