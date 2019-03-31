@@ -7,6 +7,7 @@ namespace DAL.Wallet.UnitOfWork.Interface
     {
         IAccountRepository Accounts { get; }
         ICurrencyRepository Currencies { get; }
+        ILedgerRepository Ledger { get; }
         IPaymentMethodRepository PaymentMethods { get; }
         IPaymentRepository Payments { get; }
         IProductRepository Products { get; }

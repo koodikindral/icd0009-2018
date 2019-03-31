@@ -21,6 +21,10 @@ namespace DAL.Wallet.UnitOfWork
         public ICurrencyRepository Currencies => 
             _currencyRepository ?? (_currencyRepository = new CurrencyRepository((AppDbContext) UOWDbContext));
         
+        private ILedgerRepository _ledgerRepository;        
+        public ILedgerRepository Ledger => 
+            _ledgerRepository ?? (_ledgerRepository = new LedgerRepository((AppDbContext) UOWDbContext));
+        
         private IPaymentMethodRepository _paymentMethodRepository;        
         public IPaymentMethodRepository PaymentMethods => 
             _paymentMethodRepository ?? (_paymentMethodRepository = new PaymentMethodRepository((AppDbContext) UOWDbContext));
