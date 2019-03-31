@@ -1,4 +1,4 @@
-using DAL.Base.Repository;
+using DAL.Base.Repository.Interface;
 using Domain.Sportsbook;
 
 namespace DAL.Sportsbook.Repository.Interface

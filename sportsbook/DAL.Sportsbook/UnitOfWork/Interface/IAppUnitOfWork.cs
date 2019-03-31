@@ -1,4 +1,4 @@
-using DAL.Base.UnitOfWork;
+using DAL.Base.UnitOfWork.Interface;
 using DAL.Sportsbook.Repository.Interface;
 
 namespace DAL.Sportsbook.UnitOfWork.Interface

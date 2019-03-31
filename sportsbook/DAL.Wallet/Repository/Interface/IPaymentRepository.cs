@@ -3,7 +3,7 @@ using Domain.Wallet;
 
 namespace DAL.Wallet.Repository.Interface
 {
-    public interface IAccountRepository: IBaseRepositoryAsync<Account, int>
+    public interface IPaymentRepository: IBaseRepositoryAsync<Payment, int>
     {
         
     }

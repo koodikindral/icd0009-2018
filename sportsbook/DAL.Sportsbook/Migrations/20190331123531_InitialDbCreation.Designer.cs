@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DAL.Sportsbook.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190329120129_InitialDbCreation")]
+    [Migration("20190331123531_InitialDbCreation")]
     partial class InitialDbCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

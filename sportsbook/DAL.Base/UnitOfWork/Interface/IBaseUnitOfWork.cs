@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace DAL.Base.UnitOfWork
+namespace DAL.Base.UnitOfWork.Interface
 {
     public interface IBaseUnitOfWork
     {

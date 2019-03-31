@@ -16,6 +16,22 @@ namespace DAL.Wallet.UnitOfWork
         private IAccountRepository _accountRepository;        
         public IAccountRepository Accounts => 
             _accountRepository ?? (_accountRepository = new AccountRepository((AppDbContext) UOWDbContext));
+        
+        private ICurrencyRepository _currencyRepository;        
+        public ICurrencyRepository Currencies => 
+            _currencyRepository ?? (_currencyRepository = new CurrencyRepository((AppDbContext) UOWDbContext));
+        
+        private IPaymentMethodRepository _paymentMethodRepository;        
+        public IPaymentMethodRepository PaymentMethods => 
+            _paymentMethodRepository ?? (_paymentMethodRepository = new PaymentMethodRepository((AppDbContext) UOWDbContext));
+        
+        private IPaymentRepository _paymentRepository;        
+        public IPaymentRepository Payments => 
+            _paymentRepository ?? (_paymentRepository = new PaymentRepository((AppDbContext) UOWDbContext));
+        
+        private IProductRepository _productRepository;        
+        public IProductRepository Products => 
+            _productRepository ?? (_productRepository = new ProductRepository((AppDbContext) UOWDbContext));
 
         // repo factory
         private readonly Dictionary<Type, object> _repositoryCache  = new Dictionary<Type, object>();

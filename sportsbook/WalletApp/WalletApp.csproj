@@ -13,4 +13,9 @@
         <PackageReference Include="NSwag.AspNetCore" Version="12.0.18" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\DAL.Wallet\DAL.Wallet.csproj" />
+      <ProjectReference Include="..\Domain.Wallet\Domain.Wallet.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DAL.Base.Entity;
 
-namespace DAL.Base.Repository
+namespace DAL.Base.Repository.Interface
 {
     public interface IBaseRepositoryAsync<TEntity> : IBaseRepositoryAsync<TEntity, int>
         where TEntity : class, IBaseEntity<int>, new()

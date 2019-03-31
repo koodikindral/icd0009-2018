@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DAL.Sportsbook.UnitOfWork;
 using DAL.Sportsbook.UnitOfWork.Interface;
 using Domain.Sportsbook;
 using Microsoft.AspNetCore.Mvc;

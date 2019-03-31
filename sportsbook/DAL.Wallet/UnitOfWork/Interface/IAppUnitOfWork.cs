@@ -1,4 +1,4 @@
-using DAL.Base.UnitOfWork;
+using DAL.Base.UnitOfWork.Interface;
 using DAL.Wallet.Repository.Interface;
 
 namespace DAL.Wallet.UnitOfWork.Interface
@@ -6,5 +6,9 @@ namespace DAL.Wallet.UnitOfWork.Interface
     public interface IAppUnitOfWork : IBaseUnitOfWork
     {
         IAccountRepository Accounts { get; }
+        ICurrencyRepository Currencies { get; }
+        IPaymentMethodRepository PaymentMethods { get; }
+        IPaymentRepository Payments { get; }
+        IProductRepository Products { get; }
     }
 }

@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using DAL.Base.UnitOfWork.Interface;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Base.UnitOfWork
