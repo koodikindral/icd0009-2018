@@ -5,7 +5,7 @@ pipeline {
 
         stage('Build Wallet image') {
             steps {
-                dir("../") {
+                dir("sportsbook") {
                     sh 'docker build --build-arg APP_NAME=WalletApp -t koodikindral/api:wallet .'
                 }
             }
@@ -13,7 +13,7 @@ pipeline {
       
         stage('Push Wallet image') {
             steps {
-                dir("../") {
+                dir("sportsbook") {
                     sh 'docker push koodikindral/api:wallet'
                 }
             }
