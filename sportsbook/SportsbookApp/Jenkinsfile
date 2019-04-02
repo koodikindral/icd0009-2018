@@ -6,7 +6,7 @@ pipeline {
         stage('Build Sportsbook image') {
             steps {
                 dir("../") {
-                    sh 'docker build --build-arg APP_NAME='SportsbookApp' -t koodikindral/api:sportsbook .'
+                    sh 'docker build --build-arg APP_NAME=SportsbookApp -t koodikindral/api:sportsbook .'
                 }
             }
         }
