@@ -17,4 +17,4 @@ ARG APP_NAME
 ENV APP_NAME=${APP_NAME:-SportsbookApp} 
 WORKDIR /app
 COPY --from=build-env /app/$APP_NAME/out .
-ENTRYPOINT ["dotnet", "WebApp.dll"]
+ENTRYPOINT ["dotnet", "${APP_NAME}.dll"]
