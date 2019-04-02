@@ -112,6 +112,7 @@ namespace SportsbookApp
                 app.UseHsts();
             }
 
+            app.UsePathBase("/sports");
             app.UseCors("CorsAllowAll");
             app.UseHttpsRedirection();
             app.UsePathBase("/sports");

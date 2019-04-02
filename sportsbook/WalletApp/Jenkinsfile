@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Build Wallet image') {
+            steps {
+                dir("../") {
+                    sh 'docker build --build-arg APP_NAME='WalletApp' -t koodikindral/api:wallet .'
+                }
+            }
+        }
+      
+        stage('Push Wallet image') {
+            steps {
+                dir("../") {
+                    sh 'docker push koodikindral/api:wallet'
+                }
+            }
+        }
+                
+        stage('Deploy K8S') {
+            steps {
+                sh 'kubectl set image deployments/wallet wallet=$(docker inspect --format="{{index .RepoDigests 0}}" koodikindral/api:wallet)'
+            }
+        }
+    }
+}

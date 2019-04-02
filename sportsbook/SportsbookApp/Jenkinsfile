@@ -3,17 +3,17 @@ pipeline {
 
     stages {
 
-        stage('Build Docker image') {
+        stage('Build Sportsbook image') {
             steps {
-                dir("sportsbook") {
-                    sh 'docker build -t koodikindral/api:sportsbook .'
+                dir("../") {
+                    sh 'docker build --build-arg APP_NAME='SportsbookApp' -t koodikindral/api:sportsbook .'
                 }
             }
         }
       
-        stage('Push Docker image') {
+        stage('Push Sportsbook image') {
             steps {
-                dir("sportsbook") {
+                dir("../") {
                     sh 'docker push koodikindral/api:sportsbook'
                 }
             }

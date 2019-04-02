@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace SportsbookApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class MatchController : ControllerBase
     {

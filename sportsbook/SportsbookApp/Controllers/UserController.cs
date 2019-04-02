@@ -9,7 +9,7 @@ using SportsbookApp.DTO;
 
 namespace SportsbookApp.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class UserController : ControllerBase
     {

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace WalletApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class LedgerController : ControllerBase
     {
